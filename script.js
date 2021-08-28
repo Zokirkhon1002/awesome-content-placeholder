@@ -4,6 +4,7 @@ const header = document.getElementById("header"),
       profile_img = document.getElementById('profile_img'),
       nameDate = document.getElementById('name'),
       date = document.getElementById('date'),
+      href = document.getElementById('href'),
 
 
     animated_bgs = document.querySelectorAll('.animated-bg'),
@@ -25,6 +26,17 @@ function getdata(){
     profile_img.innerHTML = `
     <img src="https://avatars.githubusercontent.com/u/78657264?v=4" class="card-img-top profile-img" alt="avatar_img">
     `;
+    let text;
+    if(Math.random() < 0.33){
+        text = `<a href="https://www.linkedin.com/in/zokirkhon-kotibkhonov-2997b1202/" class="btn btn-primary">learn more...</a>`
+    }
+    else if(Math.random() < 0.66){
+        text = `<a href="https://github.com/Zokirkhon1002" class="btn btn-primary">learn more...</a>`
+    } else {
+        text = `<a href="https://t.me/uzdev_namangan" class="btn btn-primary">learn more...</a>` 
+    }
+    href.innerHTML = text;
+    
     nameDate.innerHTML = ` Zokirkhon1002`;
     date.innerHTML = ` Aug 29, 2021`;
 
