@@ -76,7 +76,7 @@ async function getDataUsers(url, url2, url3) {
     tags: hits[i].tags,
     views: hits[i].views,
     webformatURL: hits[i].webformatURL,
-    learnMore: "Cooming soon"
+    learnMore: "https://github.com/Zokirkhon1002/awesome-content-placeholder"
   }));
   console.log(mixedApi);
   setTimeout(() => {
@@ -153,7 +153,7 @@ function getdata(users) {
                     <small class id="date">${user.date}</small>
                 </div>
             </div>
-            <p onclick="${user.learnMore}" class="btn btn-primary">learn more...</p>
+            <a href="${user.learnMore}" class="btn btn-primary">learn more...</a>
           </div>
   </div>`;
     mainForCards.insertAdjacentHTML("beforeend", newUser);
