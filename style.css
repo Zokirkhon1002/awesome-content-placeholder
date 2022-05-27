@@ -1,16 +1,148 @@
 /* Start */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+#check {
+  display: none;
+}
+
+.list {
   display: flex;
+  list-style-type: none;
+  background-color: rgb(0, 123, 255);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.item {
+  display: inline-block;
+  padding: 20px 20px;
+  transition: 0.4s ease-in-out;
+  font-size: larger;
+  margin: 0;
+  cursor: pointer;
+}
+.item a {
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+}
+#forBackground {
+  display: none;
+  background-color: rgb(0, 123, 255);
+  width: 100%;
+  height: 60px;
+}
+.item:hover {
+  background-color: rgb(4, 87, 175);
+}
+
+@media only screen and (max-width: 600px) {
+  #forBackground {
+    display: block;
+  }
+  #open {
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    width: 25px;
+    height: 3.4px;
+    background-color: #fff;
+    margin-top: 30px;
+    z-index: 2;
+    transition: 0.4s ease-in-out;
+  }
+  #open::after,
+  #open::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+  }
+  #open::after {
+    top: 7px;
+  }
+  #open::before {
+    bottom: 7px;
+  }
+  #close {
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin-top: 30px;
+    transform: rotate(45deg);
+    transform: scale(0);
+    z-index: 3;
+    transition: 0.4s ease-in-out;
+  }
+  #close::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 50px;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transform: rotate(-90deg);
+  }
+  .list {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 80px;
+    line-height: 3;
+    position: fixed;
+    text-align: center;
+    top: -100%;
+    transition: 0.5s ease-in-out;
+    z-index: 2;
+  }
+  #check:checked ~ .list {
+    top: 0;
+  }
+  #check:checked ~ label #close {
+    transform: scale(1);
+    transform: rotate(45deg);
+  }
+  #check:checked ~ label #open {
+    transform: scale(0);
+  }
+}
+.mainForCards {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 .card {
+  display: block;
   box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
   border-radius: 10px;
   overflow: hidden;
   width: 350px;
+  margin: 15px 10px;
+  transform: translateX(400%);
+  transition: all 0.3s ease-in-out;
+}
+.card:nth-of-type(even) {
+  transform: translateX(-400%);
+}
+.card.show {
+  transform: translateX(0) !important;
 }
 .card-header {
   height: 200px;
@@ -28,17 +160,23 @@ img {
   padding: 30px;
 }
 .card-title {
-  height: 20px;
+  height: 10px;
+  margin: 15px 0;
+}
+.card-excerpt1 {
+  color:rgb(0, 123, 255);
   margin: 0;
 }
 .card-excerpt {
-  color: #777;
-  margin: 10px 0 20px;
+  color: gray;
+  margin: 0;
+  padding: 0;
 }
 .author {
   display: flex;
 }
 .profile-img {
+  margin-top: 10px;
   border-radius: 50%;
   overflow: hidden;
   height: 55px;
@@ -46,6 +184,7 @@ img {
 }
 img {
   max-width: 100%;
+  margin-bottom: 10px;
 }
 .author-info {
   display: flex;
@@ -55,43 +194,43 @@ img {
   width: 100px;
 }
 a {
-    text-decoration: none;
-    margin-top: 20px;
+  text-decoration: none;
+  margin-top: 20px;
 }
 .author-info small {
-    color: #aaa;
-    margin-top: 5px;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+.animated-bg {
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 10%,
+    #f6f7f8 20%,
+    #f6f7f8 100%
+  );
+  background-size: 200% 100%;
+  animation: bgPos 1s linear infinite;
+}
+
+.animated-bg-text {
+  border-radius: 50px;
+  display: inline-block;
+  margin: 0;
+  height: 10px;
+  width: 100%;
+}
+
+@keyframes bgPos {
+  0% {
+    background-position: 50% 0;
   }
-  
-  .animated-bg {
-    background-image: linear-gradient(
-      to right,
-      #f6f7f8 0%,
-      #edeef1 10%,
-      #f6f7f8 20%,
-      #f6f7f8 100%
-    );
-    background-size: 200% 100%;
-    animation: bgPos 1s linear infinite;
+
+  100% {
+    background-position: -150% 0;
   }
-  
-  .animated-bg-text {
-    border-radius: 50px;
-    display: inline-block;
-    margin: 0;
-    height: 10px;
-    width: 100%;
-  }
-  
-  @keyframes bgPos {
-    0% {
-      background-position: 50% 0;
-    }
-  
-    100% {
-      background-position: -150% 0;
-    }
-  }
+}
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -143,4 +282,3 @@ a {
   border-color: #0062cc;
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
-
