@@ -11,6 +11,7 @@ const header = document.getElementById("header"),
   mainForCards = document.querySelector(".mainForCards"),
   cards = document.querySelectorAll(".card");
 
+
 let urlApi = "https://reqres.in/api/users";
 let urlApi2 = "https://jsonplaceholder.typicode.com/users";
 let urlApi3 =
@@ -161,4 +162,12 @@ function getdata(users) {
 
   animated_bgs.forEach((bg) => bg.classList.remove("animated-bg"));
   animated_bg_texts.forEach((bgText) => bgText.classList.remove("animated-bg"));
+}
+
+
+function scrollOff(){
+  document.body.style.overflow = "hidden"
+}
+function scrollOn(){
+  document.body.style.overflow = "auto"
 }

@@ -12,9 +12,12 @@
   <body>
     <div class="container">
       <input type="checkbox" id="check">
-      <label for="check">
-          <span id="open"></span>
-          <span id="close"></span>
+      <label  for="check">
+          <span onclick="scrollOff()" id="open"><span></span></span>
+          <span onclick="scrollOn()" id="close">
+            <span></span>
+            <span></span>
+          </span>
       </label>
 
       <div id="forBackground"></div>
