@@ -208,6 +208,9 @@ a {
 
 
 @media only screen and (max-width: 900px) {
+  .mainForCards{
+    padding-top: 80px;
+  }
   #forBackground {
     position: fixed;
     background-color: rgb(0, 123, 255);
@@ -366,6 +369,6 @@ a {
 
 @media screen and (max-width: 600px) {
   .mainForCards{
-    padding: 0 1%;
+    padding: 80px 0 1%;
   }
 }
