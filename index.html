@@ -9,27 +9,27 @@
     <link rel="stylesheet" href="style.css" />
     <title>Content-Placeholder</title>
   </head>
-  <body>
+  <body id="body">
     <div class="container">
-      <input type="checkbox" id="check">
-      <label  for="check">
-          <span onclick="scrollOff()" id="open"><span></span></span>
-          <span onclick="scrollOn()" id="close">
-            <span></span>
-            <span></span>
-          </span>
+      <input type="checkbox" id="check" />
+      <label for="check">
+        <span onclick="scrollOff()" id="open"><span></span></span>
+        <span onclick="scrollOn()" id="close">
+          <span></span>
+          <span></span>
+        </span>
       </label>
 
       <div id="forBackground"></div>
       <ul class="list">
-          <li class="item"><a href="/">Home</a></li>
-          <li class="item"><a href="/">Products</a></li>
-          <li class="item"><a href="/">Customers</a></li>
-          <li class="item"><a href="/">Service</a></li>
-          <li class="item"><a href="/">About</a></li>
+        <li class="item"><a href="/">Home</a></li>
+        <li class="item"><a href="/">Products</a></li>
+        <li class="item"><a href="/">Customers</a></li>
+        <li class="item"><a href="/">Service</a></li>
+        <li class="item"><a href="/">About</a></li>
       </ul>
-  </div>
-    <div class="mainForCards"></div>
+    </div>
+    <div class="mainForCards" id="mainForCards"></div>
 
     <script src="script.js"></script>
   </body>

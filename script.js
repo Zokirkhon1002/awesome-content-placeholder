@@ -1,16 +1,8 @@
-const header = document.getElementById("header"),
-  title = document.getElementById("title"),
-  excerpt = document.getElementById("excerpt"),
-  profile_img = document.getElementById("profile_img"),
-  nameDate = document.getElementById("name"),
-  date = document.getElementById("date"),
-  href = document.getElementById("href"),
-  animated_bgs = document.querySelectorAll(".animated-bg"),
-  animated_bg_texts = document.querySelectorAll(".animated-bg-text"),
-  body = document.querySelector("body"),
-  mainForCards = document.querySelector(".mainForCards"),
-  cards = document.querySelectorAll(".card");
-
+const [animated_bgs, animated_bg_texts, cards] = [
+  document.querySelectorAll(".animated-bg"),
+  document.querySelectorAll(".animated-bg-text"),
+  document.querySelectorAll(".card"),
+];
 
 let urlApi = "https://reqres.in/api/users";
 let urlApi2 = "https://jsonplaceholder.typicode.com/users";
@@ -31,11 +23,8 @@ async function getDataUsers(url, url2, url3) {
   ({ data, page } = await data.json());
   ({ hits } = data3);
   dataLength(data.length);
-  //   console.log(data);
   data2.length = data.length;
   hits.length = data.length;
-  //   console.log(data2);
-  //   console.log(hits);
   let date = new Date();
   const monthNames = [
     "January",
@@ -77,7 +66,7 @@ async function getDataUsers(url, url2, url3) {
     tags: hits[i].tags,
     views: hits[i].views,
     webformatURL: hits[i].webformatURL,
-    learnMore: "https://github.com/Zokirkhon1002/awesome-content-placeholder"
+    learnMore: "https://github.com/Zokirkhon1002/awesome-content-placeholder",
   }));
   console.log(mixedApi);
   setTimeout(() => {
@@ -91,9 +80,7 @@ function dataLength(n = 2) {
     <div class="card show">
         <div class="card-header animated-bg" id="header">&nbsp;</div>
         <div class="card-content">
-          <h3 class="card-title animated-bg animated-bg-text" id="title">
-            &nbsp;
-          </h3>
+          <h3 class="card-title animated-bg animated-bg-text" id="title">&nbsp;</h3>
           <p class="card-excerpt" id="excerpt">
             &nbsp;
             <span class="animated-bg animated-bg-text">&nbsp;</span>
@@ -103,12 +90,9 @@ function dataLength(n = 2) {
           <div class="author">
             <div class="profile-img animated-bg" id="profile_img">&nbsp;</div>
             <div class="author-info">
-              <strong class="animated-bg animated-bg-text" id="name"
-                >&nbsp;</strong
-              >
-              <small class="animated-bg animated-bg-text" id="date"
-                >&nbsp;</small
-              >
+              <small class="animated-bg animated-bg-text" id="name">&nbsp;</small>
+              <strong class="animated-bg animated-bg-text" id="views">&nbsp;</strong>
+              <strong class="animated-bg animated-bg-text" id="date">&nbsp;</strong>
             </div>
           </div>
           <div id="href"></div>
@@ -141,20 +125,38 @@ function getdata(users) {
           <img src="${user.webformatURL}" class="card-img-top" alt="Msi">
       </div>
       <div class="card-content">
-      <p class="card-excerpt1" id="excerpt">#${user.tags.replace(/[,]/gi,"").split(/\s/).join(" #")}</p>
-            <h5 class="card-title" id="title">${user.first_name} ${user.last_name}</h5>
+      <p class="card-excerpt1" id="excerpt">#${user.tags
+        .replace(/[,]/gi, "")
+        .split(/\s/)
+        .join(" #")}</p>
+            <h5 class="card-title" id="title">${user.first_name} ${
+      user.last_name
+    }</h5>
             <p class="card-excerpt" id="excerpt">city: ${user.address.city}</p>
-            <p class="card-excerpt" id="excerpt">street: ${user.address.street}</p>
+            <p class="card-excerpt" id="excerpt">street: ${
+              user.address.street
+            }</p>
             <div class="author">
                 <div class="profil-img" id="profile_image">
-                   <img src="${user.avatar}" class="card-img-top profile-img" alt="avatar_img">
+                   <img src="${
+                     user.avatar
+                   }" class="card-img-top profile-img" alt="avatar_img">
                 </div>
                 <div class="author-info">
                     <strong class id="name">${user.email}</strong>
+                    <small class id="views">views: ${user.views}${
+      (user.views + "").length > 6
+        ? "m"
+        : (user.views + "").length > 3
+        ? "k"
+        : ""
+    }</small>
                     <small class id="date">${user.date}</small>
                 </div>
             </div>
-            <a href="${user.learnMore}" class="btn btn-primary">learn more...</a>
+            <a href="${
+              user.learnMore
+            }" class="btn btn-primary">learn more...</a>
           </div>
   </div>`;
     mainForCards.insertAdjacentHTML("beforeend", newUser);
@@ -164,10 +166,9 @@ function getdata(users) {
   animated_bg_texts.forEach((bgText) => bgText.classList.remove("animated-bg"));
 }
 
-
-function scrollOff(){
-  document.body.style.overflow = "hidden"
+function scrollOff() {
+  document.body.style.overflow = "hidden";
 }
-function scrollOn(){
-  document.body.style.overflow = "auto"
+function scrollOn() {
+  document.body.style.overflow = "auto";
 }
